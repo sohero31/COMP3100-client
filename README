@@ -1,1 +1,17 @@
 This the repository of code and issues for Stage 1 of the client side ds-sim work for COMP3100.
+
+From the ds-sim user guide provided we obtain a potential structure for the program:
+
+  Initialise system state variables by reading
+    Simulation configuration file in the server-side simulator
+    System information in the client-side simulator
+  Initialise Clock (usually starts at simulation time zero)
+
+  While (there is a job to schedule) do
+    Get a job to schedule
+    Set a clock to next event time (based on the submission time of the job in our case)
+    Schedule the job
+    Update statistics
+  End while
+
+  Generate statistical report
