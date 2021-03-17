@@ -7,10 +7,13 @@ public class ClientTest {
 		DataOutputStream dout=new DataOutputStream(s.getOutputStream());
 		String str1 = "HELO";
 		String str2 = "AUTH dom";
+		String str3 = "REDY";
 		byte[] b= str1.getBytes();
 		byte[] b2 = str2.getBytes();
+		byte[] b3 = str3.getBytes();
 		dout.write(b);
 		dout.write(b2);
+		dout.write(b3);
 		dout.flush();
 		
 		DataInputStream din=new DataInputStream(s.getInputStream());
