@@ -1,18 +1,22 @@
 import java.io.*;
 import java.net.*;
-public class MyClient {
+public class ClientTest {
 	public static void main(String[] args) {
 		try {
 		Socket s = new Socket("localhost", 50000);
 		DataOutputStream dout=new DataOutputStream(s.getOutputStream());
-		String stri = "HELO";
-		byte[] b= stri.getBytes();
+		String str1 = "HELO";
+		String str2 = "AUTH dom";
+		byte[] b= str1.getBytes();
+		byte[] b2 = str2.getBytes();
 		dout.write(b);
+		dout.write(b2);
 		dout.flush();
 		
 		DataInputStream din=new DataInputStream(s.getInputStream());
 		String str = (String)din.readUTF();
 		System.out.println("message= "+str);
+		
 		}
 		catch(Exception e){System.out.println(e);}
 	}
