@@ -1,5 +1,8 @@
 import java.io.*;
+
 import java.net.*;
+
+
 public class ClientTest {
 	//Initialising the socket, the input/output stream, and the msg string
 	//which will allow to send/receive messages.
@@ -10,6 +13,9 @@ public class ClientTest {
 	//that works just as well
 	BufferedReader din = null;
 	DataOutputStream dout = null;
+	Boolean flag = false;
+	;
+
 
 	//Setting up the socket, the input and output streams
 	public ClientTest() {
@@ -21,6 +27,7 @@ public class ClientTest {
 		catch(Exception e){System.out.println(e);}
 	}
 	
+	
 	public void Communicator() {
 		messageSend("HELO");
 		msg = messageReceive();
@@ -28,6 +35,48 @@ public class ClientTest {
 		msg = messageReceive();
 		messageSend("REDY");
 		msg = messageReceive();
+		messageSend("GETS All");
+		msg = messageReceive();
+		messageSend("OK");
+
+		//this is the loop that schedules jobs once it has received 
+		//the information. I have attempted to manually schedule 1 job 
+		//just to see if it works and it does.
+		if (!msg.equals("NONE")) {
+			while (!flag) {
+				if (msg.equals("OK")) {
+					messageSend("REDY");
+					msg = messageReceive();
+				}
+				if (msg.equals("NONE")) {
+					flag = true;
+					break;
+				}
+				messageSend("OK");
+				messageSend("SCHD "+"0 "+"super-silk "+"0");
+				msg = messageReceive();
+				flag=true;
+				break;
+			}
+		}
+		quitCommunicating();
+	}
+	//simple and self-explanatory quitting function
+	//sends quit to the client, if it gets the quit
+	//message in response, the input/output and 
+	//server closes
+	public void quitCommunicating() {
+		try {
+			messageSend("QUIT");
+			msg = messageReceive();
+			if (msg == "QUIT") {
+				din.close();
+				dout.close();
+				s.close();
+			}
+		} catch (IOException i) {
+			System.out.println(i);
+		}
 	}
 	//sending a message using the DataOutputStream 
 	//and then flushing it. Also added in an exception handler
@@ -68,8 +117,7 @@ public class ClientTest {
 		//send and receive functions.
 			ClientTest client = new ClientTest();
 			client.Communicator();
-	/*	String str = (String)din.readLine();
-		System.out.println("message= "+str);
+	/*	
 		while (!str.equals("NONE")) {
 			String strG = "GETS All";
 			byte[] bG= strG.getBytes(); 
