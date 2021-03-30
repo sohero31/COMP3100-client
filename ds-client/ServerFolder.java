@@ -1,6 +1,6 @@
 package ServerFolder;
 // Import folder to initialize the server properties such as corecount, memory, etc
-public class Server {
+public class ServerFolder {
 	public int id;
 	public String type;
 	public int limit;
