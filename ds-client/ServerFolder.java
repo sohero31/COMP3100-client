@@ -1,5 +1,4 @@
-package ServerFolder;
-// Import folder to initialize the server properties such as corecount, memory, etc
+// server class to initialize the server properties such as corecount, memory, etc
 public class ServerFolder {
 	public int id;
 	public String type;
@@ -10,7 +9,7 @@ public class ServerFolder {
 	public int memory;
 	public int disk;
 
-	public Server(int id, String t, int l, int b, float r, int c, int m, int d) {
+	public ServerFolder(int id, String t, int l, int b, float r, int c, int m, int d) {
 		this.id = id;
 		this.type = t;
 		this.limit = l;
