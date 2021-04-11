@@ -7,10 +7,12 @@ import org.w3c.dom.*;
 import Folder.Server;	
 
 public class ClientTest {
+
 	//Initialising the socket, the input/output stream, and the msg string
 	//which will allow to send/receive messages.
 	Socket s = null;
 	String msg = "";
+	
 	//I have read that DataInputStream is outdated/deprecated 
 	//and I have found a way to use buffered reader in a way 
 	//that works just as well
@@ -82,6 +84,7 @@ public class ClientTest {
 			System.out.println(i);
 		}
 	}
+	
 	//sending a message using the DataOutputStream 
 	//and then flushing it. Also added in an exception handler
 	//this code is the same as before, just wrapped in a function
@@ -94,6 +97,7 @@ public class ClientTest {
 				System.out.println(e);
 			}
 	}
+	
 	//receiving a message and returning a string.
 	public String messageReceive() {
 		String message = "";
@@ -112,6 +116,8 @@ public class ClientTest {
 		}
 		return message;
 	}
+	
+	// Finds the largest Server and returns it
 	public int largeServer() {
 		int largeServer = sArr.get(0).id;
 		for (int i=1; i < sArr.size(); i++) {
@@ -121,6 +127,8 @@ public class ClientTest {
 		}
 		return largeServer;
 	}
+	
+	//Parses the xml file
 	public void parse(){
         try{
             File sysXML = new File("ds-system.xml");
@@ -151,6 +159,7 @@ public class ClientTest {
 		}
 
     }
+    
 	//trying to use constructors and functions
 	//instead of big chunks of code
 	public static void main(String[] args) {
