@@ -18,7 +18,6 @@ public class ClientTest {
 	//that works just as well
 	BufferedReader din = null;
 	DataOutputStream dout = null;
-	Boolean flag = false;
 	List<Server> sArr  = new ArrayList<Server>();
 	int largeServer  = 0;
 	
