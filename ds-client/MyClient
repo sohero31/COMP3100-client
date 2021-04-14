@@ -37,7 +37,7 @@ public class ClientTest {
 	public void Communicator() {
 		messageSend("HELO");
 		msg = messageReceive();
-		messageSend("AUTH dom");
+		messageSend("AUTH Comp3100");
 		msg = messageReceive();
 		parse();
 		messageSend("REDY");
