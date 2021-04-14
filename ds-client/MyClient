@@ -35,16 +35,18 @@ public class ClientTest {
 	
 	
 	public void Communicator() {
+	//this small section is the pseudo-authentication between server and client.
 		messageSend("HELO");
 		msg = messageReceive();
 		messageSend("AUTH Comp3100");
 		msg = messageReceive();
+	//upon succesful auth, the client will receive the XML and parse it
 		parse();
 		messageSend("REDY");
 		msg = messageReceive();
 		
 
-
+	//this section relates to the actual scheduling of tasks/jobs and dealing with JCPL through an if/else conditional
 		while (!msg.equals("NONE")) {
 			if (msg.equals("OK")) {
 					messageSend("REDY");
