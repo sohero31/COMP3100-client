@@ -1,6 +1,6 @@
 This the repository of code and issues for Stage 1 of the client side ds-sim work for COMP3100.
 
-From the ds-sim user guide provided we obtain a potential structure for the program:
+From the ds-sim user guide provided we obtain a conceptual structure for the program:
 
   Initialise system state variables by reading
     Simulation configuration file in the server-side simulator
@@ -15,3 +15,9 @@ From the ds-sim user guide provided we obtain a potential structure for the prog
   End while
 
   Generate statistical report
+
+
+To run the program, clone the repository and then change into the pre-compiled directory.
+From there run the server with the desired XML file, i.e. ./ds-server -c ds-sample.xml -v all 
+(N.B. [-v all] is not required to run the program but outputs onto the terminal the details of the program run)
+Next, run the client side with the command: java Client
