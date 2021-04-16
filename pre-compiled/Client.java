@@ -152,7 +152,6 @@ public class Client {
 				int d = Integer.parseInt(server.getAttribute("disk"));
 				Server temp = new Server(i, t, l, b, r, c, m, d);	//initialising data server temp to contain all the nodes 
 				sArr.add(temp);					
-				//System.out.println(sArr.get(sArr.size()-1).coreCount);			//printing out the number of cores
 			}
 			largeServer = largeServer();
 		} catch (Exception ex) {
@@ -164,11 +163,11 @@ public class Client {
 	//trying to use constructors and functions
 	//instead of big chunks of code
 	public static void main(String[] args) {
-		//this establishes a new instance of the ClientTest
-		//name client and then runs the communicator function
+		//this establishes a new instance of the Client
+		//named client and then runs the communicator function
 		//The communicator function just runs the simple message
 		//send and receive functions.
-			ClientTest client = new ClientTest();
+			Client client = new Client();
 			client.Communicator();
 		
 	}
