@@ -6,7 +6,7 @@ import org.w3c.dom.*;
 
 import Folder.Server;	
 
-public class Client {
+public class Client_Stage1 {
 	//Initialising the socket, the input/output stream, and the msg string
 	//which will allow to send/receive messages.
 	Socket s = null;
@@ -25,7 +25,7 @@ public class Client {
 
 
 	//Setting up the socket, the input and output streams
-	public Client() {
+	public Client_Stage1() {
 		try {
 			s = new Socket("localhost", 50000);
 			din = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -164,7 +164,7 @@ public class Client {
 		//The communicator function just runs the simple message
 		//send and receive functions.
 			
-			Client client = new Client();
+			Client_Stage1 client_Stage1 = new Client_Stage1();
 			client.Communicator();
 		
 	}
