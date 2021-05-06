@@ -165,7 +165,7 @@ public class Client_Stage1 {
 		//send and receive functions.
 			
 			Client_Stage1 client_Stage1 = new Client_Stage1();
-			client.Communicator();
+			client_Stage1.Communicator();
 		
 	}
 }
