@@ -11,6 +11,7 @@ public class Client {
         //which will allow to send/receive messages.
         Socket s = null;
         String msg = "";
+	int serverPort = 50000;
         //I have read that DataInputStream is outdated/deprecated 
         //and I have found a way to use buffered reader in a way 
         //that works just as well
@@ -27,7 +28,7 @@ public class Client {
         //Setting up the socket, the input and output streams
         public Client() {
                 try {
-                      s = new Socket("localhost", 50000);
+                      s = new Socket("localhost", serverPort);
                       din = new BufferedReader(new InputStreamReader(s.getInputStream()));
                       dout = new DataOutputStream(s.getOutputStream());
                }
