@@ -40,7 +40,7 @@ public class Client {
                 //this is the pseudo-authentication betweeen server and client
                 messageSend("HELO\n");
                 msg = messageReceive();
-                messageSend("AUTH dom\n");
+                messageSend("AUTH sohero\n");
                 msg = messageReceive();
                 parse();
                 messageSend("REDY\n");
