@@ -45,31 +45,35 @@ public class Client {
                 parse();
                 messageSend("REDY\n");
                 msg = messageReceive();
+                //algo should schedule the jobs
+                algoTest();
+		//quit funtion when it comes time
+                quitCommunicating();
+        }
+	
+	//implementing the algorithm 
+	public void algoTest(){
+	//this is the section that schedules jobs
+		while (!msg.equals("NONE")) {
+			if (msg.equals("OK")) {
+				messageSend("REDY\n");
+				msg = messageReceive();
+			}
 
-
-                //this is the section that schedules jobs
-                while (!msg.equals("NONE")) {
-                        if (msg.equals("OK")) {
-                                        messageSend("REDY\n");
-                                        msg = messageReceive();
-                                       }
-
-                         String[] jobData = new String[10];
-                         jobData = msg.split("\\s+");
-                         int count = Integer.parseInt(jobData[2]);
+			 String[] jobData = new String[10];
+			 jobData = msg.split("\\s+");
+			 int count = Integer.parseInt(jobData[2]);
                          if (!jobData[0].equals("JCPL")) {	
 
-                                  messageSend("SCHD "+count+" "+sArr.get(largeServer).type + " " + "0\n");
-                                  msg = messageReceive();
+			  	messageSend("SCHD "+count+" "+sArr.get(largeServer).type + " " + "0\n");
+			  	msg = messageReceive();
                           } else {
-                                  messageSend("REDY\n");
-                                  msg = messageReceive();
-                          }
-
-
-
-                  }quitCommunicating();
-        }
+			  	messageSend("REDY\n");
+			  	msg = messageReceive();
+				}
+		}
+	}
+	
 	
         //simple and self-explanatory quitting function.
         //sends quit to the client, if it gets the quit
