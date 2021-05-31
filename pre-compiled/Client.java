@@ -48,8 +48,17 @@ public class Client {
                 //algo should schedule the jobs
                 algoTest();
 		
+
+		//quit funtion when it comes time
+
+                quitCommunicating();
+        }
+	
+	//implementing the algorithm 
+	public void algoTest(){
 		//this is the section that schedules jobs
 		while (!msg.equals("NONE")) {
+			//message equals OK, it shows the cloent is ready to get more data
 			if (msg.equals("OK")) {
 				messageSend("REDY\n");
 				msg = messageReceive();
@@ -58,23 +67,28 @@ public class Client {
 			 String[] jobData = new String[10];
 			 jobData = msg.split("\\s+");
 			 int count = Integer.parseInt(jobData[2]);
-                         if (!jobData[0].equals("JCPL")) {	
-
-			  	messageSend("SCHD "+count+" "+sArr.get(largeServer).type + " " + "0\n");
-			  	msg = messageReceive();
-                          } else {
-			  	messageSend("REDY\n");
-			  	msg = messageReceive();
+                         if (!jobData[0].equals("JCPL")) {
+				messageSend("REDY\n");
+				msg = messageReceive();
+				
+				jobData = msg.split("\\s+");
+ 				fword = jobData[0];
+				 
+                          } 
+			//this is where it chooses which server to choose for a job to run
+			 else {
+				String[] parts = msg.split("\\s+");				
+				selected(parts);
+				msg = messageReceive();
+ 				
+				messageSend("SCHD "+count+" "+sArr.get(largeServer).type + " " + "0\n");
+			  	msg = messageReceive(); 
 				}
 		}
-		//quit funtion when it comes time
-
-                quitCommunicating();
-        }
+	}
 	
-	//implementing the algorithm 
-	public void algoTest(){
-
+	public void parts(){
+	
 	}
 	
 	
