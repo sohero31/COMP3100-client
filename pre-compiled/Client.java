@@ -47,13 +47,8 @@ public class Client {
                 msg = messageReceive();
                 //algo should schedule the jobs
                 algoTest();
-		//quit funtion when it comes time
-                quitCommunicating();
-        }
-	
-	//implementing the algorithm 
-	public void algoTest(){
-	//this is the section that schedules jobs
+		
+		//this is the section that schedules jobs
 		while (!msg.equals("NONE")) {
 			if (msg.equals("OK")) {
 				messageSend("REDY\n");
@@ -72,6 +67,14 @@ public class Client {
 			  	msg = messageReceive();
 				}
 		}
+		//quit funtion when it comes time
+
+                quitCommunicating();
+        }
+	
+	//implementing the algorithm 
+	public void algoTest(){
+
 	}
 	
 	
