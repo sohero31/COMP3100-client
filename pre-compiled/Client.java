@@ -19,7 +19,7 @@ public class Client {
         DataOutputStream dout = null;
         Boolean flag = false;
         List<Server> sArr  = new ArrayList<Server>();
-        int largeServer  = 0;
+        int lserver  = 0;
 	
 	
 	
@@ -81,13 +81,14 @@ public class Client {
 				selected(parts);
 				msg = messageReceive();
  				
-				messageSend("SCHD "+count+" "+sArr.get(largeServer).type + " " + "0\n");
+				messageSend("SCHD "+count+" "+sArr.get(lserver).type + " " + "0\n");
 			  	msg = messageReceive(); 
 				}
 		}
 	}
 	
-	public void parts(){
+	// function to choose which server should be chosen
+	public void Schosen(){
 	
 	}
 	
@@ -139,14 +140,14 @@ public class Client {
                 }
                 return message;
         }
-        public int largeServer() {
-                int largeServer = sArr.get(0).id;
+        public int lserver() {
+                int lserver = sArr.get(0).id;
                 for (int i=1; i < sArr.size(); i++) {
-                        if (sArr.get(i).coreCount > sArr.get(largeServer).coreCount) {
-                                largeServer = sArr.get(i).id;
+                        if (sArr.get(i).coreCount > sArr.get(lserver).coreCount) {
+                                lserver = sArr.get(i).id;
                         }
                 }
-                return largeServer;
+                return lserver;
         }
   
         public void parse(){
@@ -173,7 +174,7 @@ public class Client {
                                 sArr.add(temp);					
                                 //System.out.println(sArr.get(sArr.size()-1).coreCount);			//printing out the number of cores
                     }
-                    largeServer = largeServer();
+                    lserver = lserver();
             } catch (Exception ex) {
                     ex.printStackTrace();
             }
